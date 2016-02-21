@@ -1,17 +1,7 @@
-buildscript {
-  ext.kotlin_version = '1.0.0'
-  repositories {
-    mavenCentral()
-  }
-  dependencies {
-    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-  }
-}
-
-apply plugin: "kotlin"
+apply plugin: "scala"
 apply plugin: "application"
 
-mainClassName = "demo.HelloWorld"
+mainClassName = "euler.Main"
 
 sourceSets {
   deploy
@@ -19,16 +9,40 @@ sourceSets {
 
 repositories {
   mavenCentral()
+  maven {
+    url 'http://scala-tools.org/repo-releases'
+  }
 }
 
 dependencies {
-  compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+  // Libraries needed to run the scala tools
+1
+  //scala
+  compile 'org.scala-lang:scala-library:2.11.7'
+
+//  testCompile 'org.scalactic:scalactic_2.11:2.2.6'
+//  compileTestScala 'org.scalactic:scalatest_2.11:2.2.6'
+
+  //jmh
+  compile "org.openjdk.jmh:jmh-core:1.11.3"
+  compile "org.openjdk.jmh:jmh-generator-annprocess:1.11.3"
+
+//  junit
   testCompile  'junit:junit:4.11'
-  testCompile "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
 }
 
-test.testClassesDir = project.tasks.compileTestKotlin.destinationDir
 
 task wrapper(type: Wrapper) {
   gradleVersion="2.7"
+}
+
+task test(overwrite: true, dependsOn: testClasses) << {
+  ant.taskdef(name: 'scalatest',
+          classname: 'org.scalatest.tools.ScalaTestAntTask',
+          classpath: sourceSets.test.runtimeClasspath.asPath
+  )
+  ant.scalatest(runpath: sourceSets.test.classesDir,
+          haltonfailure: 'true',
+          fork: 'false') {reporter(type: 'stdout')}
 }
