@@ -12,6 +12,7 @@ repositories {
   maven {
     url 'http://scala-tools.org/repo-releases'
   }
+
 }
 
 dependencies {
@@ -27,6 +28,8 @@ dependencies {
   //jmh
   compile "org.openjdk.jmh:jmh-core:1.11.3"
   compile "org.openjdk.jmh:jmh-generator-annprocess:1.11.3"
+  //scalaMeter
+  compile "com.storm-enroute:scalameter_2.11:0.7"
 
 //  junit
   testCompile  'junit:junit:4.11'

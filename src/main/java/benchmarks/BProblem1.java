@@ -2,7 +2,8 @@ package benchmarks;
 
 import euler.Problem1;
 import org.openjdk.jmh.annotations.*;
-
+import problem3.PrimeTests;
+import problem3.SProblem3;
 
 
 @BenchmarkMode(Mode.AverageTime)
@@ -13,12 +14,10 @@ public class BProblem1 {
 
     @Benchmark
     public void benchmarkGetSumOfMultiplesBelow2() {
-        Problem1.getSumOfMultiplesBelow2(10_000_000);
     }
 
     @Benchmark
     public void benchmarkGetSumOfMultiplesBelow3() {
-        Problem1.getSumOfMultiplesBelow3(10_000_000);
     }
 
 }

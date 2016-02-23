@@ -1,14 +1,16 @@
 import euler.Problem1;
 import euler.problem2.{FibGen, Problem2};
 import org.junit.Test;
-import org.junit.Assert.assertEquals
+import org.junit.Assert.{assertEquals, assertTrue, assertFalse}
+import org.openjdk.jmh.annotations.Benchmark
 import problem2.SProblem2
+import problem3.SProblem3
 ;
 
 /**
   * Created by adrian on 21/2/2016.
   */
-class TestProblem1 {
+class TestProblems {
 
   @Test
   def experiment() :Unit = {
@@ -35,7 +37,17 @@ class TestProblem1 {
     assertEquals(4613732, SProblem2.solve2(4000000));
     assertEquals(4613732, SProblem2.solve3(4000000));
 
+  }
 
+  @Benchmark
+  @Test
+  def test3 {
 
+    assertEquals(List(2, 5), SProblem3.primeFactors(100)())
+    assertEquals(List(3, 11), SProblem3.primeFactors(99)())
+    assertEquals(List(2, 41, 61), SProblem3.primeFactors(5002)())
+
+    assertEquals(6857, SProblem3.primeFactors(SProblem3.BIG_NUMBER)().last)
   }
 }
+

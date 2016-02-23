@@ -6,10 +6,6 @@ import java.util.Spliterators;
 import java.util.function.IntUnaryOperator;
 import java.util.function.LongConsumer;
 import java.util.function.LongUnaryOperator;
-import java.util.function.Predicate;
-import java.util.stream.IntStream;
-import java.util.stream.LongStream;
-import java.util.stream.StreamSupport;
 
 /**
  * Created by adrian on 21/2/2016.
