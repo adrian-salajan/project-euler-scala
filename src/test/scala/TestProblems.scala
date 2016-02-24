@@ -4,7 +4,7 @@ import org.junit.Test;
 import org.junit.Assert.{assertEquals, assertTrue, assertFalse}
 import org.openjdk.jmh.annotations.Benchmark
 import problem2.SProblem2
-import problem3.SProblem3
+import problem3.{PrimeTests, SProblem3}
 ;
 
 /**
@@ -39,15 +39,15 @@ class TestProblems {
 
   }
 
-  @Benchmark
   @Test
-  def test3 {
+  def test3() {
 
     assertEquals(List(2, 5), SProblem3.primeFactors(100)())
     assertEquals(List(3, 11), SProblem3.primeFactors(99)())
     assertEquals(List(2, 41, 61), SProblem3.primeFactors(5002)())
 
-    assertEquals(6857, SProblem3.primeFactors(SProblem3.BIG_NUMBER)().last)
+    assertEquals(6857, SProblem3.primeFactors(SProblem3.BIG_NUMBER)(PrimeTests.isPrimeOptimised).last)
+    assertEquals(6857, SProblem3.getLastFactor(SProblem3.BIG_NUMBER))
   }
 }
 

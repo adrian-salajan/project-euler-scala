@@ -43,4 +43,19 @@ object SProblem3 {
     }
   }
 
+  //So that's what a "factor" means...
+  def getLastFactor(n :Long):Long = {
+    var number = n;
+    var factor = 2;
+    var lastFactor = factor;
+    while (number != 1L) {
+      if (number % factor == 0) {
+        lastFactor = factor;
+        while (number % factor == 0) {number = number / factor}
+      }
+      factor += 1;
+    }
+    lastFactor
+  }
+
 }
