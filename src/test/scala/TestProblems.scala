@@ -1,8 +1,7 @@
 import euler.Problem1;
-import euler.problem2.{FibGen, Problem2};
+import euler.problem2.{Problem2};
 import org.junit.Test;
 import org.junit.Assert.{assertEquals, assertTrue, assertFalse}
-import org.openjdk.jmh.annotations.Benchmark
 import problem2.SProblem2
 import problem3.{PrimeTests, SProblem3}
 ;
@@ -48,6 +47,17 @@ class TestProblems {
 
     assertEquals(6857, SProblem3.primeFactors(SProblem3.BIG_NUMBER)(PrimeTests.isPrimeOptimised).last)
     assertEquals(6857, SProblem3.getLastFactor(SProblem3.BIG_NUMBER))
+  }
+
+  @Test //palindrome
+  def test4(): Unit = {
+    assertTrue(Problem4.isPalindrome(1221))
+    assertTrue(Problem4.isPalindrome(909))
+
+    assertFalse(Problem4.isPalindrome(109))
+    assertFalse(Problem4.isPalindrome(12))
+
+    assertEquals(906609, Problem4.highestNaivePali)
   }
 }
 

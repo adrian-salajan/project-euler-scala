@@ -5,7 +5,6 @@ import scala.collection.immutable.Stream.cons
 /**
   * Created by adrian on 23/2/2016.
   */
-//TODO more efficient implementations!
 object SProblem3 {
 
   val BIG_NUMBER = 600851475143L;
