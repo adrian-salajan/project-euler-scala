@@ -1,8 +1,6 @@
 package problem2
 
-/**
-  * Created by adrian on 21/2/2016.
-  */
+//By considering the terms in the Fibonacci sequence whose values do not exceed four million, find the sum of the even-valued terms
 object SProblem2 {
 
   def solve3(limit :Int) :Int = {

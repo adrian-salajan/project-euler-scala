@@ -1,16 +1,17 @@
 package problem3
 
-import scala.collection.immutable.Stream.cons
 
-/**
-  * Created by adrian on 23/2/2016.
-  */
+//What is the largest prime factor of the number 600851475143 ?
 object SProblem3 {
 
   val BIG_NUMBER = 600851475143L;
   type PrimeTest = (Long) => Boolean
 
   def primeFactors(n :Long)(primeTest: PrimeTest = PrimeTests.isPrime):List[Long] = {
+    factorize(n)(primeTest).distinct
+  }
+
+  def factorize(n :Long)(primeTest: PrimeTest = PrimeTests.isPrime):List[Long] = {
 
     var factors :List[Long] = Nil
     var number = n;
@@ -25,7 +26,7 @@ object SProblem3 {
         primeIterator = new PrimeIterator(number, primeTest)
       }
     }
-    factors.distinct.reverse
+    factors.reverse
   }
 
   def getPrimeIterator(limit:Long) = new PrimeIterator(limit, PrimeTests.isPrime)

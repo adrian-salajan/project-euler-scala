@@ -4,23 +4,14 @@ import org.junit.Test;
 import org.junit.Assert.{assertEquals, assertTrue, assertFalse}
 import problem2.SProblem2
 import problem3.{PrimeTests, SProblem3}
+import problem5.Problem5
+import problem6.Problem6
 ;
 
 /**
   * Created by adrian on 21/2/2016.
   */
 class TestProblems {
-
-  @Test
-  def experiment() :Unit = {
-    val a = Stream(1, 2, 3, 4)
-    val b = Stream(1, 2, 3, 4)
-    val ab = a.zip(b)
-    ab.foreach(print)
-    println
-    val z = a.zip(a.tail)
-    z.foreach(print)
-  }
 
   @Test
   def test1(): Unit = {
@@ -59,5 +50,16 @@ class TestProblems {
 
     assertEquals(906609, Problem4.highestNaivePali)
   }
+
+  @Test //smalles number divisible with all numbers in range 1..20
+  def test5(): Unit = {
+
+    assertEquals(232792560, Problem5.solve(rangeMax = 20))
+  }
+  @Test // sum of squares - square of sum  1..100
+  def test6(): Unit = {
+    assertEquals(25164150, Problem6.solve())
+  }
+
 }
 
